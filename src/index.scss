@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+body {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 140%;
+  /* or 21px */
+  margin: 0px;
+
+  color: #8F959E;
+  max-width: 767px;
+  @media (min-width: 767px) {
+    margin:0px auto;
+  }
+}
+
