@@ -8,7 +8,7 @@ function ThankYou() {
     <>
     <div className='wrapper'>
     <div className="ThankYou">
-      <img onClick={()=>navigate(-1)} className="back" src="/images/back.png" />
+      <img onClick={()=>navigate(-1)} className="back" src="/images/backs.png" />
       <div className="content">
         <img className='thnx' src="/images/thnx.png" />
         <hr />
