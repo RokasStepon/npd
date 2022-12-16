@@ -13,5 +13,6 @@ body {
   @media (min-width: 767px) {
     margin:0px auto;
   }
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
