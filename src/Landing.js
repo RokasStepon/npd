@@ -1,6 +1,8 @@
 import React from 'react';
 import './Landing.scss';
 import { IconScan, IconHome2, IconUser } from '@tabler/icons';
+import { useLocation, Link } from 'react-router-dom';
+import qs from 'qs';
 
 function Landing() {
   function getMobileOperatingSystem() {
@@ -34,23 +36,40 @@ function Landing() {
         '/images/dress/4.png',
         '/images/dress/5.png',
       ],
-      price: '1€',
+      price: '600€',
       sizes: ["38", "40", "42", "44"],
       description: "This alluring, elegant Sheath dress is made of stretch jersey, a fabric with a soft, silky feel. Elegant minimalist design is combined with an innovative material in this style that embodies the brand's dual soul and its desire to re-elaborate the past from a modern perspective."
+    },
+    {
+      name: 'Pizza lover painting',
+      subtitle: 'Pizza is Life / Paintings',
+      images: [
+        '/images/pizza/1.png',
+        '/images/pizza/2.png',
+        '/images/pizza/3.png',
+        '/images/pizza/4.png',
+        '/images/pizza/5.png',
+      ],
+      price: '1200€',
+      sizes: ["20x25", "30x45", "45x60", "60x75"],
+      description: "Need a splash of color in your kitchen, dining, or restaurant? Need a fun unique gift for a pizza lover? This Pizza Art Print is exactly what you are looking for!"
     }
   ];
-
+  const location = useLocation();
   const [product, setProduct] = React.useState(products[0]);
   const [currentSize, setCurrentSize] = React.useState(0);
   const [activePicture, setaAtivePicture] = React.useState(0);
 
-  // React.useEffect(() => {
-  //   if (!!getEmail(location.search) || (!!email && email != '')) {
-  //     updateGeneralState({ email });
-
-  //     trackEvent(email, TrackEventTypes.purchasePageViewed, {});
-  //   }
-  // }, [location.search, email]);
+  React.useEffect(() => {
+    const queryParams = qs.parse(location.search, {
+      ignoreQueryPrefix: true,
+    });
+  
+    if (queryParams && typeof queryParams.product === 'string') {
+      let index = parseInt(queryParams.product)-1;
+      if (products[index] !== product)  setProduct(products[index]);
+    }
+    }, [location.search]);
 
   return (
     <>
@@ -86,8 +105,8 @@ function Landing() {
         <p>{product.description}</p>
       </div>
       <div className='payments'>
-       {getMobileOperatingSystem() != "Android" && <img src="https://developer.apple.com/design/human-interface-guidelines/technologies/apple-pay/images/button-pay-with_2x.png" />}
-       {getMobileOperatingSystem() == "Android" && <img src="https://www.ccbank.bg/web/files/richeditor/fizicheski-lica/bankovi-karti/kartovi-uslugi/Add_to_GPay.png" />}
+       {getMobileOperatingSystem() != "Android" && <Link to="/thank-you"><img src="https://developer.apple.com/design/human-interface-guidelines/technologies/apple-pay/images/button-pay-with_2x.png" /></Link>}
+       {getMobileOperatingSystem() == "Android" && <Link to="/thank-you"><img src="https://www.ccbank.bg/web/files/richeditor/fizicheski-lica/bankovi-karti/kartovi-uslugi/Add_to_GPay.png" /></Link>}
 
       </div>
     </div>

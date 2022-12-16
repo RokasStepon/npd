@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
 import Landing from './Landing';
+import ThankYou from './ThankYou';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -17,7 +18,9 @@ const App = () => {
     <Router>
       <ScrollToTop>
         <Routes>
-          <Route exact path="/" element={<Landing />}>
+        <Route exact path="/" element={<Landing />}>
+          </Route>
+          <Route exact path="/thank-you" element={<ThankYou />}>
           </Route>
         </Routes>
       </ScrollToTop>

@@ -1,0 +1,44 @@
+.desktop {
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.wrapper{
+  .ThankYou {
+    height: 100vh;
+    min-height: -webkit-fill-available;
+    background: #FEFEFE;
+    margin: 20px;
+    .back {
+      cursor: pointer;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-image: url("./bg.png");
+      background-position: 50% 20px;
+      background-repeat: no-repeat;
+      .thnx {
+        margin-top: 70px;
+      }
+      h1 {
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 110%;
+        color: #1D1E20;
+        margin-bottom: 20px;
+        margin-top: 80px;
+      }
+      p {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 160%;
+        text-align: center;
+        color: #8F959E;
+      }
+    }
+  }
+}
