@@ -11,10 +11,10 @@
     display: none;
   }
   .Landing {
-    height: 100vh;
+    min-height: 100vh;
     min-height: -webkit-fill-available;
     width: 100%;
-    margin-bottom: 100px;
+    // margin-bottom: 100px;
     background: #FEFEFE;
     border-radius: 0px 0px 40px 40px;
     overflow: scroll;
