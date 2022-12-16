@@ -183,3 +183,33 @@
     }
   }
 }
+.modal {
+  $background: #fff;
+  $border: 1px solid #e3e3e3;
+  $shadow: 0 0 5px #CCC;
+  $arrow-loc: 50px;
+  $arrow-size: 20px;
+  $arrow-diag: 14px;
+
+  background-color: $background;
+  border: $border;
+  box-shadow: $shadow;
+
+  margin: 30px;
+  padding: 20px;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+      height: 50px;
+      cursor: pointer;
+    }
+    .pablo {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import './Landing.scss';
 import { IconScan, IconHome2, IconUser } from '@tabler/icons';
 import { useLocation, Link } from 'react-router-dom';
+import Modal from 'react-modal';
 import qs from 'qs';
 
 function Landing() {
@@ -59,6 +60,7 @@ function Landing() {
   const [product, setProduct] = React.useState(products[0]);
   const [currentSize, setCurrentSize] = React.useState(0);
   const [activePicture, setaAtivePicture] = React.useState(0);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
   React.useEffect(() => {
     const queryParams = qs.parse(location.search, {
@@ -73,6 +75,23 @@ function Landing() {
 
   return (
     <>
+    <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={()=>setIsOpen(false)}
+        contentLabel="Are you ready?"
+        className="modal"
+      >
+        <div className='container'>
+      <img className="pablo" src="https://media3.giphy.com/media/jc2PkKKr3clTBekMzn/giphy.gif?cid=ecf05e47w2lbhmj3rjlfhbwfkx9my1nsrtk9yn64bi93gkd0&rid=giphy.gif&ct=g" />
+      <p>
+        Please confirm your details below, sit back and relax, <b>while we do the rest!</b> <br /><br />
+        Your address: <b>Hogwarts School of Witchcraft and Wizardry, Scottish Highlands, United Kingdom</b><br /><br />
+        Estimated delivery: <b>Dec. 20th - 22nd</b>
+      </p>
+      {getMobileOperatingSystem() != "Android" && <Link to="/thank-you"><img src="https://developer.apple.com/design/human-interface-guidelines/technologies/apple-pay/images/button-pay-with_2x.png" /></Link>}
+      {getMobileOperatingSystem() == "Android" && <Link to="/thank-you"><img src="https://www.ccbank.bg/web/files/richeditor/fizicheski-lica/bankovi-karti/kartovi-uslugi/Add_to_GPay.png" /></Link>}
+      </div>
+      </Modal>
     <div className='wrapper'>
     <div className="Landing">
     <img className="main-photo" src={product.images[activePicture]} />
@@ -105,9 +124,8 @@ function Landing() {
         <p>{product.description}</p>
       </div>
       <div className='payments'>
-       {getMobileOperatingSystem() != "Android" && <Link to="/thank-you"><img src="https://developer.apple.com/design/human-interface-guidelines/technologies/apple-pay/images/button-pay-with_2x.png" /></Link>}
-       {getMobileOperatingSystem() == "Android" && <Link to="/thank-you"><img src="https://www.ccbank.bg/web/files/richeditor/fizicheski-lica/bankovi-karti/kartovi-uslugi/Add_to_GPay.png" /></Link>}
-
+        <button onClick={()=>setIsOpen(true)} class="button-27">BUY NOW</button>
+       
       </div>
     </div>
 
